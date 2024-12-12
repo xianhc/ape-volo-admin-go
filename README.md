@@ -85,7 +85,7 @@ GoLand版本 >= v1.23
 |  :---:  |
 | <img width="150" src="https://www.apevolo.com/uploads/file/wechat/20230723172451.jpg">
 
-添加微信，备注"加群"
+添加微信，备注"go"
 
 #### 🤟捐赠
 如果你觉得这个项目对你有帮助，你可以请作者喝饮料 :tropical_drink: [点我](http://doc.apevolo.com/donate/)
