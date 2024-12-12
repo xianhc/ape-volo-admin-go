@@ -1,0 +1,133 @@
+system:
+  env: public
+  is-init-table : true
+  is-init-table-data : true
+  db-type: sqlite
+  oss-type: local
+  file-limit-size : 10
+  router-prefix: "api"
+  port: 8002
+  use-redis: true
+  is-quick-debug: true
+mssql:
+  prefix: ""
+  host: "localhost"
+  port: "1433"
+  config: ""
+  db-name: "apevoloMaster"
+  username: "sa"
+  password: "123456"
+  engine: ""
+  log-mode: ""
+  max-idle-conns: 10
+  max-open-conns: 100
+  singular: false
+  log-zap: false
+mysql:
+  prefix: ""
+  host: "localhost"
+  port: "3306"
+  config: "parseTime=true"
+  db-name: "apevoloMaster"
+  username: "root"
+  password: "123456"
+  engine: ""
+  log-mode: ""
+  max-idle-conns: 10
+  max-open-conns: 100
+  singular: false
+  log-zap: true
+oracle:
+  prefix: ""
+  host: ""
+  port: ""
+  config: ""
+  db-name: ""
+  username: ""
+  password: ""
+  engine: ""
+  log-mode: ""
+  max-idle-conns: 10
+  max-open-conns: 100
+  singular: false
+  log-zap: false
+pgsql:
+  prefix: ""
+  host: ""
+  port: ""
+  config: ""
+  db-name: ""
+  username: ""
+  password: ""
+  engine: ""
+  log-mode: ""
+  max-idle-conns: 10
+  max-open-conns: 100
+  singular: false
+  log-zap: false
+sqlite:
+  prefix: ""
+  host: C:\DB
+  port: ""
+  config: ""
+  db-name: apevoloMaster
+  username: ""
+  password: ""
+  engine: ""
+  log-mode: error
+  max-idle-conns: 10
+  max-open-conns: 100
+  singular: false
+  log-zap: false
+captcha:
+  key-length: 6
+  img-width: 111
+  img-height: 36
+  threshold: 0
+  time-out: 3600
+login-failed-limit:
+  enabled: true
+  max_attempts: 3
+  lockout: 7200
+cors:
+  mode: whitelist # strict-whitelist
+  whitelist:
+    - allow-origin: http://localhost:8001
+      allow-methods: POST, GET, Options
+      allow-headers: Content-Type,AccessToken,X-CSRF-Token, Authorization, Token,X-Token,X-User-Id
+      expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type
+      allow-credentials: true
+    - allow-origin: http://127.0.0.1:8001
+      allow-methods: GET, POST, Options
+      allow-headers: content-type
+      expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type
+      allow-credentials: true
+zap:
+  level: info
+  prefix:  '[Ape-Volo]'
+  format: console
+  director: logs
+  encode-level: LowercaseColorLevelEncoder
+  stacktrace-key: stacktrace
+  max-age: 0
+  show-line: true
+  log-in-console: true
+redis:
+  addr: 127.0.0.1:6379
+  password: ""
+  db: 0
+excel:
+  dir: ./resource/exportFile/
+jwt-auth-options:
+  "audience": "http://localhost"
+  "issuer": "http://localhost"
+  "security_key": "5ixKD0BkJxYYroZTvdPs3w9NWRoiUacN"
+  "expires": 12
+  "refresh_token_expires": 168
+  "login_path": "/auth/login"
+local:
+  path: /uploads/file
+  store-path: uploads/file
+rsa:
+  PrivateKey: MIICXAIBAAKBgQCAYjJNTDWSTJ8RBnZ9hp7AS8eFJvxpuZYTqGjD8qak45DKkAhpi7SNXDNbfDXNbUFeH465hwQIznS5fHdWgUAoqByGjHoYu1jRhDx72EgKhuvDQ3sxwLJr0Ynx1f1Ny9yt8wtLaVc9KcJ8m/pHmmAGz+xf7rzZ8dJvnee+OHMkNwIDAQABAoGADt3lhPr8FybP+BOUrsDjQFG7gelRAIM7uadeXmvf1/ym5zYaVfKWJBUsY1M1ExwBnlSEMsAg+6Nrc+anFnmILsulPGdrSm3fwPKwhzlrwXd0zl3AK3Mz8GK08CInY6KGM0z0tQ1CIC+b+ilMUjquhOAyS041f2FbN7FEXLoS/tUCQQCEDckdx0syO5emYSdVtQrCumrH0ZRWHr2QOHXX/0Srz5rPyHcgfjOr0oi3aPAY9zduBcaWswKGjqvQgn+QRYQbAkEA+OKCeACCpPQ5jb+9cRLNpO+rUnDDe1zItSTiZ+qljla34BgbZiZJMW1N1KnesXVUFWg1q6UbtCa5ruNujabKFQJAJn3aNKrl2VOThbTmAU6PP2mVPH9zjJLTUJmUiAxpWOdfydc2GiuPJjNtFIErEyvkZVabp0uwncYygMm5IzWQJwJBAL6XXwgcg+9kIyrcuWr81kRHUTApsFko/X5Sh5rCgxOUbu0KKPk5unVCWgbQKvxEeCaIjgkqwCNeQHWgLsoE/t0CQEHHJG3Djcl9Ok6N6emZunGoBP83+iPlQ1aoq+K6tXBOTDHkswl7VTyfphhDfMDrgX9e3B+6HvswxqvgU+ATZbA=
+  PublicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCAYjJNTDWSTJ8RBnZ9hp7AS8eFJvxpuZYTqGjD8qak45DKkAhpi7SNXDNbfDXNbUFeH465hwQIznS5fHdWgUAoqByGjHoYu1jRhDx72EgKhuvDQ3sxwLJr0Ynx1f1Ny9yt8wtLaVc9KcJ8m/pHmmAGz+xf7rzZ8dJvnee+OHMkNwIDAQAB

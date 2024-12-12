@@ -1,0 +1,5195 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/auditing/current": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AuditLog"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "log request object",
+                        "name": "request",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/dto.LogQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auditing/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AuditLog"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "查询参数",
+                        "name": "data",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/dto.LogQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/menu/build": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "构建前端路由菜单",
+                "responses": {
+                    "200": {
+                        "description": "构建前端路由菜单",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/response.TreeMenuVo"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/menu/child": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "获取所有子级菜单ID",
+                "responses": {
+                    "200": {
+                        "description": "获取所有子级菜单ID",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/menu/lazy": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "获取子菜单",
+                "responses": {
+                    "200": {
+                        "description": "获取子菜单",
+                        "schema": {
+                            "$ref": "#/definitions/permission.Menu"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/menu/superior": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "获取同级、父级菜单",
+                "responses": {
+                    "200": {
+                        "description": "获取同级、父级菜单",
+                        "schema": {
+                            "$ref": "#/definitions/permission.Menu"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/online/out": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OnlineUser"
+                ],
+                "summary": "用户登出",
+                "parameters": [
+                    {
+                        "description": "ID集合",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/online/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OnlineUser"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": " ",
+                        "name": "request",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/request.Pagination"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/apis/edit": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RolePermissionApi"
+                ],
+                "summary": "更新角色Apis关联",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateJobDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateRoleDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/apis/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RolePermissionApi"
+                ],
+                "summary": "查询",
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/vo.ApisTree"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/menus/edit": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RolePermissionApi"
+                ],
+                "summary": "更新角色菜单关联",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateJobDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateRoleDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/menus/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RolePermissionApi"
+                ],
+                "summary": "查询",
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/permission.Menu"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/service/resources/info": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ServerResourcesInfo"
+                ],
+                "summary": "查询",
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/utils.ServerResourcesInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/apis/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Apis"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateApisDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateApisDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/apis/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Apis"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/apis/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Apis"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateApisDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateApisDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/apis/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Apis"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Apis request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ApisQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/appSecret/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AppSecret"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateAppSecretDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateAppSecretDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/appSecret/download": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AppSecret"
+                ],
+                "summary": "导出",
+                "parameters": [
+                    {
+                        "description": "AppSecret request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.AppSecretQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/appSecret/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AppSecret"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateAppSecretDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateAppSecretDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AppSecret"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/appSecret/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AppSecret"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "AppSecret request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.AppSecretQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/captcha": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "生成验证码",
+                "responses": {
+                    "200": {
+                        "description": "生成验证码,返回包括随机数id,base64",
+                        "schema": {
+                            "$ref": "#/definitions/response.Captcha"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/code/reset/email": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "获取邮箱验证码",
+                "responses": {
+                    "200": {
+                        "description": "发送成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/info": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "获取用户信息",
+                "responses": {
+                    "200": {
+                        "description": "返回包括用户信息,token,过期时间",
+                        "schema": {
+                            "$ref": "#/definitions/response.JwtUser"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "用户登录",
+                "parameters": [
+                    {
+                        "description": "用户名, 密码, 验证码 随机数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.LoginAuthUser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "返回包括用户信息,token,过期时间",
+                        "schema": {
+                            "$ref": "#/definitions/response.Login"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "用户登出",
+                "responses": {
+                    "200": {
+                        "description": "登出成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/refreshToken": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "刷新Token，以旧换新",
+                "parameters": [
+                    {
+                        "description": "token值",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.RefreshToken"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "返回包括用户信息,token,过期时间",
+                        "schema": {
+                            "$ref": "#/definitions/response.JwtToken"
+                        }
+                    }
+                }
+            }
+        },
+        "/dept/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dept"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateDeptDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateDeptDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/dept/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dept"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/dept/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dept"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateDeptDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateDeptDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/dept/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dept"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Dept request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.DeptQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/dept/superior": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dept"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/dict/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dict"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateDictDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateDictDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/dict/download": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dict"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Dict request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.DictQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/dict/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dict"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateDictDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateDictDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dict"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/dict/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dict"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Dict request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.DictQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/dictDetail/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DictDetail"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateDictDetailDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateDictDetailDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/dictDetail/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dict"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/dictDetail/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DictDetail"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateDictDetailDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateDictDetailDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/dictDetail/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "DictDetail"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "dictName",
+                        "name": "dictName",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/email/account/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EmailAccount"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateEmailAccountDto",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateEmailAccountDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/email/account/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EmailAccount"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/email/account/download": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EmailAccount"
+                ],
+                "summary": "导出",
+                "parameters": [
+                    {
+                        "description": "request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.EmailAccountQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/email/account/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EmailAccount"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateEmailAccountDto",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateEmailAccountDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/email/account/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EmailAccount"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.EmailAccountQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/email/template/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EmailMessageTemplate"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateEmailMessageTemplateDto",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateEmailMessageTemplateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/email/template/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EmailMessageTemplate"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/email/template/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EmailMessageTemplate"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateEmailMessageTemplateDto",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateEmailMessageTemplateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/email/template/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EmailMessageTemplate"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateEmailMessageTemplateDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/exception/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ExceptionLog"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "log request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.LogQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/job/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Job"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateJobDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateJobDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/job/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Job"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/job/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Job"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateJobDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateJobDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/job/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Job"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Job request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.JobQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/job/queryAll": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Job"
+                ],
+                "summary": "查询全部岗位",
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/menu/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateMenuDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateMenuDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/menu/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/menu/download": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Role request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/menu/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateMenuDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateMenuDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/menu/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Menu"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Menu request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.MenuQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/queued/email/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "QueuedEmail"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateEmailQueuedDto",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateEmailQueuedDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/queued/email/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "QueuedEmail"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/queued/email/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "QueuedEmail"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateEmailQueuedDto",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateEmailQueuedDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/queued/email/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "QueuedEmail"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.EmailQueuedQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/all": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "查询全部角色",
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/permission.Role"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/role/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateRoleDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateRoleDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/download": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Role request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateJobDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateRoleDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/level": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "查询",
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.RoleLevel"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Role request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RoleQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/querySingle": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "查看单一角色",
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateSettingDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateSettingDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/download": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Setting request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.SettingQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateSettingDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateSettingDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Setting request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.SettingQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/storage/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Storage"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/storage/download": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "FileRecord"
+                ],
+                "summary": "导出",
+                "parameters": [
+                    {
+                        "description": "FileRecord request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.FileRecordQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "导出成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/storage/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Storage"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateFileRecordDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateFileRecordDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/storage/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "FileRecord"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "FileRecord request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.FileRecordQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/storage/upload": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Storage"
+                ],
+                "summary": "上传文件",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "上传文件示例",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/task/download": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "Task request object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.TaskQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateTaskDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateTaskDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "编辑",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateTaskDto object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateTaskDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "编辑成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/execute": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "执行",
+                "responses": {
+                    "200": {
+                        "description": "执行成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/pause": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "暂停",
+                "responses": {
+                    "200": {
+                        "description": "暂停成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/query": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "查询",
+                "parameters": [
+                    {
+                        "description": "TaskQueryCriteria object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.TaskQueryCriteria"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResultPage"
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/resume": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "暂停",
+                "responses": {
+                    "200": {
+                        "description": "暂停成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "创建",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateUserReq object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateUserReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/delete": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "删除",
+                "parameters": [
+                    {
+                        "description": "ID数组",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.IdCollection"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/edit": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "修改",
+                "parameters": [
+                    {
+                        "description": "CreateUpdateUserReq object",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateUpdateUserReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#/definitions/response.ActionResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/query": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserApe"
+                ],
+                "summary": "分页获取用户列表",
+                "parameters": [
+                    {
+                        "description": "页码, 每页大小",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.Pagination"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "分页获取用户列表,返回包括列表,总数,页码,每页数量",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/response.ActionResultPage"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.ApisIdDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "0"
+                }
+            }
+        },
+        "dto.ApisQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.AppSecretQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "keyWords": {
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.CreateUpdateApisDto": {
+            "type": "object",
+            "required": [
+                "description",
+                "group",
+                "method",
+                "url"
+            ],
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateAppSecretDto": {
+            "type": "object",
+            "required": [
+                "appName"
+            ],
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "remark": {
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateDeptDto": {
+            "type": "object",
+            "required": [
+                "name",
+                "sort"
+            ],
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parentId": {
+                    "type": "string",
+                    "example": "0"
+                },
+                "sort": {
+                    "type": "integer",
+                    "maximum": 999,
+                    "minimum": 1
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateDictDetailDto": {
+            "type": "object",
+            "required": [
+                "dictSort",
+                "label",
+                "value"
+            ],
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "dict": {
+                    "$ref": "#/definitions/dto.DictDto"
+                },
+                "dictSort": {
+                    "type": "integer",
+                    "maximum": 999,
+                    "minimum": 1
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateDictDto": {
+            "type": "object",
+            "required": [
+                "description",
+                "name"
+            ],
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateEmailAccountDto": {
+            "type": "object",
+            "required": [
+                "displayName",
+                "email",
+                "host",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "电子邮件显示名称",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "电子邮件地址",
+                    "type": "string"
+                },
+                "enableSsl": {
+                    "description": "是否SSL",
+                    "type": "boolean"
+                },
+                "host": {
+                    "description": "主机",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "password": {
+                    "description": "密码",
+                    "type": "string"
+                },
+                "port": {
+                    "description": "端口",
+                    "type": "integer"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "useDefaultCredentials": {
+                    "description": "是否与请求一起发送应用程序的默认系统凭据",
+                    "type": "boolean"
+                },
+                "username": {
+                    "description": "用户名",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateEmailMessageTemplateDto": {
+            "type": "object",
+            "required": [
+                "body",
+                "name",
+                "subject"
+            ],
+            "properties": {
+                "bccEmailAddresses": {
+                    "description": "抄送邮箱地址",
+                    "type": "string"
+                },
+                "body": {
+                    "description": "内容",
+                    "type": "string"
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "emailAccountId": {
+                    "description": "邮箱账户标识符",
+                    "type": "integer"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "isActive": {
+                    "description": "是否激活",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "模板名称",
+                    "type": "string"
+                },
+                "subject": {
+                    "description": "主题",
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateEmailQueuedDto": {
+            "type": "object",
+            "required": [
+                "body",
+                "to"
+            ],
+            "properties": {
+                "bcc": {
+                    "description": "密件抄送",
+                    "type": "string"
+                },
+                "body": {
+                    "description": "内容",
+                    "type": "string"
+                },
+                "cc": {
+                    "description": "抄送",
+                    "type": "string"
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "emailAccountId": {
+                    "description": "发件邮箱ID",
+                    "type": "integer"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "priority": {
+                    "description": "优先级",
+                    "type": "integer"
+                },
+                "replyTo": {
+                    "description": "回复邮箱",
+                    "type": "string"
+                },
+                "replyToName": {
+                    "description": "回复人名称",
+                    "type": "string"
+                },
+                "sendTime": {
+                    "description": "发送时间",
+                    "type": "string"
+                },
+                "sentTries": {
+                    "description": "发送上限次数",
+                    "type": "integer"
+                },
+                "subject": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "to": {
+                    "description": "收件邮箱",
+                    "type": "string"
+                },
+                "toName": {
+                    "description": "收件人名称",
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateFileRecordDto": {
+            "type": "object",
+            "required": [
+                "description"
+            ],
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateJobDto": {
+            "type": "object",
+            "required": [
+                "name",
+                "sort"
+            ],
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "integer",
+                    "maximum": 999,
+                    "minimum": 1
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateMenuDto": {
+            "type": "object",
+            "required": [
+                "sort",
+                "title",
+                "type"
+            ],
+            "properties": {
+                "cache": {
+                    "type": "boolean"
+                },
+                "component": {
+                    "type": "string"
+                },
+                "componentName": {
+                    "type": "string"
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "hidden": {
+                    "type": "boolean"
+                },
+                "iFrame": {
+                    "type": "boolean"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "parentId": {
+                    "type": "string",
+                    "example": "0"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "permission": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "integer",
+                    "maximum": 999,
+                    "minimum": 1
+                },
+                "subCount": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer",
+                    "maximum": 3,
+                    "minimum": 1
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateRoleDto": {
+            "type": "object",
+            "required": [
+                "description",
+                "level",
+                "name",
+                "permission"
+            ],
+            "properties": {
+                "apis": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.ApisIdDto"
+                    }
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "dataScope": {
+                    "type": "string"
+                },
+                "depts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.DeptDto"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "level": {
+                    "type": "integer",
+                    "maximum": 999,
+                    "minimum": 1
+                },
+                "menus": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.MenuIdDto"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "permission": {
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateSettingDto": {
+            "type": "object",
+            "required": [
+                "name",
+                "value"
+            ],
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateTaskDto": {
+            "type": "object",
+            "required": [
+                "assemblyName",
+                "className",
+                "taskGroup",
+                "taskName"
+            ],
+            "properties": {
+                "alertEmail": {
+                    "description": "告警邮箱",
+                    "type": "string"
+                },
+                "assemblyName": {
+                    "description": "程序集名称",
+                    "type": "string"
+                },
+                "className": {
+                    "description": "任务所在类",
+                    "type": "string"
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "cron": {
+                    "description": "表达式",
+                    "type": "string"
+                },
+                "cycleRunTimes": {
+                    "description": "循环执行次数",
+                    "type": "integer"
+                },
+                "description": {
+                    "description": "任务描述",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "结束时间",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "intervalSecond": {
+                    "description": "执行间隔时间, 秒为单位",
+                    "type": "integer"
+                },
+                "isEnable": {
+                    "description": "是否启动",
+                    "type": "boolean"
+                },
+                "pauseAfterFailure": {
+                    "description": "任务失败后是否暂停",
+                    "type": "boolean"
+                },
+                "principal": {
+                    "description": "任务负责人",
+                    "type": "string"
+                },
+                "runParams": {
+                    "description": "执行传参",
+                    "type": "string"
+                },
+                "runTimes": {
+                    "description": "执行次数",
+                    "type": "integer"
+                },
+                "startTime": {
+                    "description": "开始时间",
+                    "type": "string"
+                },
+                "taskGroup": {
+                    "description": "任务分组",
+                    "type": "string"
+                },
+                "taskName": {
+                    "description": "任务名称",
+                    "type": "string"
+                },
+                "triggerType": {
+                    "description": "触发器类型（0、simple 1、cron）",
+                    "type": "integer"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateUpdateUserReq": {
+            "type": "object",
+            "required": [
+                "dept",
+                "email",
+                "gender",
+                "jobs",
+                "nickName",
+                "phone",
+                "roles",
+                "username"
+            ],
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "dept": {
+                    "$ref": "#/definitions/dto.DeptDto"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "jobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.JobDto"
+                    }
+                },
+                "nickName": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.RoleDto"
+                    }
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.DeptDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "0"
+                }
+            }
+        },
+        "dto.DeptQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "deptName": {
+                    "description": "部门名称",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "是否启用",
+                    "type": "boolean"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "parentId": {
+                    "description": "父ID",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.DictDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "字典ID",
+                    "type": "string",
+                    "example": "0"
+                }
+            }
+        },
+        "dto.DictQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "keyWords": {
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.EmailAccountQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "description": "用户名",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "displayName": {
+                    "description": "显示名称",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "邮箱",
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.EmailQueuedQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "description": "时间",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "emailAccountId": {
+                    "description": "发件方",
+                    "type": "integer"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "integer"
+                },
+                "isSend": {
+                    "description": "是否已发送",
+                    "type": "boolean"
+                },
+                "maxTries": {
+                    "description": "最大发送次数",
+                    "type": "integer"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "to": {
+                    "description": "接收方",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.FileRecordQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "keyWords": {
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.JobDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "0"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.JobQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "jobName": {
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.LogQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "keyWords": {
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.MenuIdDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "0"
+                }
+            }
+        },
+        "dto.MenuQueryCriteria": {
+            "type": "object",
+            "properties": {
+                "createTime": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "parentId": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.RoleDto": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "0"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "permission": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.RoleQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.SettingQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "keyWords": {
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.TaskQueryCriteria": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "createTime": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "taskName": {
+                    "type": "string"
+                }
+            }
+        },
+        "permission.Apis": {
+            "type": "object",
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "描述",
+                    "type": "string"
+                },
+                "group": {
+                    "description": "组",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "method": {
+                    "description": "请求方法",
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "请求路径",
+                    "type": "string"
+                }
+            }
+        },
+        "permission.Department": {
+            "type": "object",
+            "properties": {
+                "children": {
+                    "description": "子部门集合",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.Department"
+                    }
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "是否启用",
+                    "type": "boolean"
+                },
+                "hasChildren": {
+                    "description": "是否有子级",
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "label": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "leaf": {
+                    "description": "是否能展开",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "岗位名称",
+                    "type": "string"
+                },
+                "parentId": {
+                    "description": "父级部门ID",
+                    "type": "string",
+                    "example": "0"
+                },
+                "roles": {
+                    "description": "角色列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.Role"
+                    }
+                },
+                "sort": {
+                    "description": "排序",
+                    "type": "integer"
+                },
+                "subCount": {
+                    "description": "子节点个数",
+                    "type": "integer"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "users": {
+                    "description": "用户列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.User"
+                    }
+                }
+            }
+        },
+        "permission.Job": {
+            "type": "object",
+            "properties": {
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "是否启用",
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "name": {
+                    "description": "岗位名称",
+                    "type": "string"
+                },
+                "sort": {
+                    "description": "排序",
+                    "type": "integer"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "permission.Menu": {
+            "type": "object",
+            "properties": {
+                "cache": {
+                    "description": "是否缓存",
+                    "type": "boolean"
+                },
+                "children": {
+                    "description": "子菜单集合",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.Menu"
+                    }
+                },
+                "component": {
+                    "description": "组件",
+                    "type": "string"
+                },
+                "componentName": {
+                    "description": "组件名称",
+                    "type": "string"
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "hasChildren": {
+                    "description": "是否有子级",
+                    "type": "boolean"
+                },
+                "hidden": {
+                    "description": "是否隐藏",
+                    "type": "boolean"
+                },
+                "iFrame": {
+                    "description": "是否iframe",
+                    "type": "boolean"
+                },
+                "icon": {
+                    "description": "icon图标",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "label": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "leaf": {
+                    "description": "是否能展开",
+                    "type": "boolean"
+                },
+                "parentId": {
+                    "description": "父级菜单ID",
+                    "type": "string",
+                    "example": "0"
+                },
+                "path": {
+                    "description": "组件路径",
+                    "type": "string"
+                },
+                "permission": {
+                    "description": "权限标识符",
+                    "type": "string"
+                },
+                "sort": {
+                    "description": "排序",
+                    "type": "integer"
+                },
+                "subCount": {
+                    "description": "子节点个数",
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "菜单标题",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "类型 1.目录 2.菜单 3.按钮",
+                    "type": "integer"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        },
+        "permission.Role": {
+            "type": "object",
+            "properties": {
+                "apis": {
+                    "description": "菜单列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.Apis"
+                    }
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "dataScope": {
+                    "description": "数据权限",
+                    "type": "string"
+                },
+                "depts": {
+                    "description": "部门列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.Department"
+                    }
+                },
+                "description": {
+                    "description": "描述",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "level": {
+                    "description": "角色等级",
+                    "type": "integer"
+                },
+                "menus": {
+                    "description": "菜单列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.Menu"
+                    }
+                },
+                "name": {
+                    "description": "岗位名称",
+                    "type": "string"
+                },
+                "permission": {
+                    "description": "角色代码",
+                    "type": "string"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "users": {
+                    "description": "用户列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.User"
+                    }
+                }
+            }
+        },
+        "permission.User": {
+            "type": "object",
+            "properties": {
+                "avatarPath": {
+                    "description": "头像路径",
+                    "type": "string"
+                },
+                "createBy": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "dept": {
+                    "$ref": "#/definitions/permission.Department"
+                },
+                "deptId": {
+                    "description": "部门ID",
+                    "type": "string",
+                    "example": "0"
+                },
+                "email": {
+                    "description": "用户邮箱",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "是否激活",
+                    "type": "boolean"
+                },
+                "gender": {
+                    "description": "性别",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键编码",
+                    "type": "string",
+                    "example": "0"
+                },
+                "isAdmin": {
+                    "description": "是否管理员",
+                    "type": "boolean"
+                },
+                "jobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.Job"
+                    }
+                },
+                "nickName": {
+                    "description": "用户昵称",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "登录密码 初始化数据之后可把json设置-不响应给前端",
+                    "type": "string"
+                },
+                "passwordReSetTime": {
+                    "description": "密码最后修改时间",
+                    "type": "string"
+                },
+                "phone": {
+                    "description": "用户手机号",
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/permission.Role"
+                    }
+                },
+                "sex": {
+                    "description": "性别",
+                    "type": "boolean"
+                },
+                "updateBy": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "用户名",
+                    "type": "string"
+                }
+            }
+        },
+        "request.IdCollection": {
+            "type": "object",
+            "properties": {
+                "idArray": {
+                    "description": "id集合",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "request.LoginAuthUser": {
+            "type": "object",
+            "required": [
+                "captcha",
+                "captchaId",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "captcha": {
+                    "description": "验证码",
+                    "type": "string"
+                },
+                "captchaId": {
+                    "description": "验证码ID",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "密码",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "用户名",
+                    "type": "string"
+                }
+            }
+        },
+        "request.Pagination": {
+            "type": "object",
+            "required": [
+                "pageIndex",
+                "pageSize"
+            ],
+            "properties": {
+                "pageIndex": {
+                    "description": "页码",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页大小",
+                    "type": "integer"
+                },
+                "sortFields": {
+                    "description": "排序",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "request.RefreshToken": {
+            "type": "object",
+            "required": [
+                "token"
+            ],
+            "properties": {
+                "token": {
+                    "description": "用户名",
+                    "type": "string"
+                }
+            }
+        },
+        "response.ActionError": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "response.ActionResult": {
+            "type": "object",
+            "properties": {
+                "actionError": {
+                    "description": "错误集合",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/response.ActionError"
+                        }
+                    ]
+                },
+                "message": {
+                    "description": "消息提示",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "请求路径",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "状态码",
+                    "type": "integer"
+                },
+                "timestamp": {
+                    "description": "时间戳",
+                    "type": "integer"
+                }
+            }
+        },
+        "response.ActionResultPage": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "description": "响应内容"
+                },
+                "totalElements": {
+                    "description": "总条数",
+                    "type": "integer"
+                }
+            }
+        },
+        "response.Captcha": {
+            "type": "object",
+            "properties": {
+                "captchaId": {
+                    "type": "string"
+                },
+                "img": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.JwtToken": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                },
+                "expires_in": {
+                    "type": "integer"
+                },
+                "refresh_token": {
+                    "type": "string"
+                },
+                "refresh_token_expires_in": {
+                    "type": "integer"
+                },
+                "token_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.JwtUser": {
+            "type": "object",
+            "properties": {
+                "dataScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user": {
+                    "$ref": "#/definitions/permission.User"
+                }
+            }
+        },
+        "response.Login": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "$ref": "#/definitions/response.JwtToken"
+                },
+                "user": {
+                    "$ref": "#/definitions/response.JwtUser"
+                }
+            }
+        },
+        "response.Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {},
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.RoleLevel": {
+            "type": "object",
+            "properties": {
+                "level": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.TreeMenuMeta": {
+            "type": "object",
+            "properties": {
+                "icon": {
+                    "type": "string"
+                },
+                "noCache": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.TreeMenuVo": {
+            "type": "object",
+            "properties": {
+                "alwaysShow": {
+                    "type": "boolean"
+                },
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/response.TreeMenuVo"
+                    }
+                },
+                "component": {
+                    "type": "string"
+                },
+                "hidden": {
+                    "type": "boolean"
+                },
+                "meta": {
+                    "$ref": "#/definitions/response.TreeMenuMeta"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "redirect": {
+                    "type": "string"
+                }
+            }
+        },
+        "utils.Cpu": {
+            "type": "object",
+            "properties": {
+                "core": {
+                    "description": "物理核心",
+                    "type": "string"
+                },
+                "coreNumber": {
+                    "description": "核心数量",
+                    "type": "string"
+                },
+                "idle": {
+                    "description": "剩余",
+                    "type": "string"
+                },
+                "logic": {
+                    "description": "逻辑cpu",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "cpu名称",
+                    "type": "string"
+                },
+                "package": {
+                    "description": "物理cpu",
+                    "type": "string"
+                },
+                "used": {
+                    "description": "使用",
+                    "type": "string"
+                }
+            }
+        },
+        "utils.Disk": {
+            "type": "object",
+            "properties": {
+                "available": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "string"
+                },
+                "usageRate": {
+                    "type": "string"
+                },
+                "used": {
+                    "type": "string"
+                }
+            }
+        },
+        "utils.Memory": {
+            "type": "object",
+            "properties": {
+                "available": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "string"
+                },
+                "usageRate": {
+                    "type": "string"
+                },
+                "used": {
+                    "type": "string"
+                }
+            }
+        },
+        "utils.ServerResourcesInfo": {
+            "type": "object",
+            "properties": {
+                "cpu": {
+                    "$ref": "#/definitions/utils.Cpu"
+                },
+                "disk": {
+                    "$ref": "#/definitions/utils.Disk"
+                },
+                "memory": {
+                    "$ref": "#/definitions/utils.Memory"
+                },
+                "swap": {
+                    "$ref": "#/definitions/utils.Swap"
+                },
+                "sys": {
+                    "$ref": "#/definitions/utils.Sys"
+                },
+                "time": {
+                    "type": "string"
+                }
+            }
+        },
+        "utils.Swap": {
+            "type": "object",
+            "properties": {
+                "available": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "string"
+                },
+                "usageRate": {
+                    "type": "string"
+                },
+                "used": {
+                    "type": "string"
+                }
+            }
+        },
+        "utils.Sys": {
+            "type": "object",
+            "properties": {
+                "day": {
+                    "description": "运行时间",
+                    "type": "string"
+                },
+                "os": {
+                    "description": "服务器系统版本",
+                    "type": "string"
+                },
+                "runtimeVersion": {
+                    "description": "业务系统运行时版本",
+                    "type": "string"
+                }
+            }
+        },
+        "vo.ApisTree": {
+            "type": "object",
+            "properties": {
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/vo.ApisTree"
+                    }
+                },
+                "hasChildren": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "leaf": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

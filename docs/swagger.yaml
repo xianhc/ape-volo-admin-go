@@ -1,0 +1,3459 @@
+definitions:
+  dto.ApisIdDto:
+    properties:
+      id:
+        example: "0"
+        type: string
+    type: object
+  dto.ApisQueryCriteria:
+    properties:
+      description:
+        type: string
+      group:
+        type: string
+      method:
+        type: string
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.AppSecretQueryCriteria:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      keyWords:
+        type: string
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.CreateUpdateApisDto:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      description:
+        type: string
+      group:
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      method:
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+      url:
+        type: string
+    required:
+    - description
+    - group
+    - method
+    - url
+    type: object
+  dto.CreateUpdateAppSecretDto:
+    properties:
+      appName:
+        type: string
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      remark:
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - appName
+    type: object
+  dto.CreateUpdateDeptDto:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      enabled:
+        type: boolean
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      name:
+        type: string
+      parentId:
+        example: "0"
+        type: string
+      sort:
+        maximum: 999
+        minimum: 1
+        type: integer
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - name
+    - sort
+    type: object
+  dto.CreateUpdateDictDetailDto:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      dict:
+        $ref: '#/definitions/dto.DictDto'
+      dictSort:
+        maximum: 999
+        minimum: 1
+        type: integer
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      label:
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+      value:
+        type: string
+    required:
+    - dictSort
+    - label
+    - value
+    type: object
+  dto.CreateUpdateDictDto:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      description:
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      name:
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - description
+    - name
+    type: object
+  dto.CreateUpdateEmailAccountDto:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      displayName:
+        description: 电子邮件显示名称
+        type: string
+      email:
+        description: 电子邮件地址
+        type: string
+      enableSsl:
+        description: 是否SSL
+        type: boolean
+      host:
+        description: 主机
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      password:
+        description: 密码
+        type: string
+      port:
+        description: 端口
+        type: integer
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+      useDefaultCredentials:
+        description: 是否与请求一起发送应用程序的默认系统凭据
+        type: boolean
+      username:
+        description: 用户名
+        type: string
+    required:
+    - displayName
+    - email
+    - host
+    - password
+    - username
+    type: object
+  dto.CreateUpdateEmailMessageTemplateDto:
+    properties:
+      bccEmailAddresses:
+        description: 抄送邮箱地址
+        type: string
+      body:
+        description: 内容
+        type: string
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      emailAccountId:
+        description: 邮箱账户标识符
+        type: integer
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      isActive:
+        description: 是否激活
+        type: boolean
+      name:
+        description: 模板名称
+        type: string
+      subject:
+        description: 主题
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - body
+    - name
+    - subject
+    type: object
+  dto.CreateUpdateEmailQueuedDto:
+    properties:
+      bcc:
+        description: 密件抄送
+        type: string
+      body:
+        description: 内容
+        type: string
+      cc:
+        description: 抄送
+        type: string
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      emailAccountId:
+        description: 发件邮箱ID
+        type: integer
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      priority:
+        description: 优先级
+        type: integer
+      replyTo:
+        description: 回复邮箱
+        type: string
+      replyToName:
+        description: 回复人名称
+        type: string
+      sendTime:
+        description: 发送时间
+        type: string
+      sentTries:
+        description: 发送上限次数
+        type: integer
+      subject:
+        description: 标题
+        type: string
+      to:
+        description: 收件邮箱
+        type: string
+      toName:
+        description: 收件人名称
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - body
+    - to
+    type: object
+  dto.CreateUpdateFileRecordDto:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      description:
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - description
+    type: object
+  dto.CreateUpdateJobDto:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      enabled:
+        type: boolean
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      name:
+        type: string
+      sort:
+        maximum: 999
+        minimum: 1
+        type: integer
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - name
+    - sort
+    type: object
+  dto.CreateUpdateMenuDto:
+    properties:
+      cache:
+        type: boolean
+      component:
+        type: string
+      componentName:
+        type: string
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      hidden:
+        type: boolean
+      iFrame:
+        type: boolean
+      icon:
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      parentId:
+        example: "0"
+        type: string
+      path:
+        type: string
+      permission:
+        type: string
+      sort:
+        maximum: 999
+        minimum: 1
+        type: integer
+      subCount:
+        type: integer
+      title:
+        type: string
+      type:
+        maximum: 3
+        minimum: 1
+        type: integer
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - sort
+    - title
+    - type
+    type: object
+  dto.CreateUpdateRoleDto:
+    properties:
+      apis:
+        items:
+          $ref: '#/definitions/dto.ApisIdDto'
+        type: array
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      dataScope:
+        type: string
+      depts:
+        items:
+          $ref: '#/definitions/dto.DeptDto'
+        type: array
+      description:
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      level:
+        maximum: 999
+        minimum: 1
+        type: integer
+      menus:
+        items:
+          $ref: '#/definitions/dto.MenuIdDto'
+        type: array
+      name:
+        type: string
+      permission:
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - description
+    - level
+    - name
+    - permission
+    type: object
+  dto.CreateUpdateSettingDto:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      description:
+        type: string
+      enabled:
+        type: boolean
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      name:
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+      value:
+        type: string
+    required:
+    - name
+    - value
+    type: object
+  dto.CreateUpdateTaskDto:
+    properties:
+      alertEmail:
+        description: 告警邮箱
+        type: string
+      assemblyName:
+        description: 程序集名称
+        type: string
+      className:
+        description: 任务所在类
+        type: string
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      cron:
+        description: 表达式
+        type: string
+      cycleRunTimes:
+        description: 循环执行次数
+        type: integer
+      description:
+        description: 任务描述
+        type: string
+      endTime:
+        description: 结束时间
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      intervalSecond:
+        description: 执行间隔时间, 秒为单位
+        type: integer
+      isEnable:
+        description: 是否启动
+        type: boolean
+      pauseAfterFailure:
+        description: 任务失败后是否暂停
+        type: boolean
+      principal:
+        description: 任务负责人
+        type: string
+      runParams:
+        description: 执行传参
+        type: string
+      runTimes:
+        description: 执行次数
+        type: integer
+      startTime:
+        description: 开始时间
+        type: string
+      taskGroup:
+        description: 任务分组
+        type: string
+      taskName:
+        description: 任务名称
+        type: string
+      triggerType:
+        description: 触发器类型（0、simple 1、cron）
+        type: integer
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    required:
+    - assemblyName
+    - className
+    - taskGroup
+    - taskName
+    type: object
+  dto.CreateUpdateUserReq:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      dept:
+        $ref: '#/definitions/dto.DeptDto'
+      email:
+        type: string
+      enabled:
+        type: boolean
+      gender:
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      jobs:
+        items:
+          $ref: '#/definitions/dto.JobDto'
+        type: array
+      nickName:
+        type: string
+      phone:
+        type: string
+      roles:
+        items:
+          $ref: '#/definitions/dto.RoleDto'
+        type: array
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+      username:
+        type: string
+    required:
+    - dept
+    - email
+    - gender
+    - jobs
+    - nickName
+    - phone
+    - roles
+    - username
+    type: object
+  dto.DeptDto:
+    properties:
+      id:
+        example: "0"
+        type: string
+    type: object
+  dto.DeptQueryCriteria:
+    properties:
+      createTime:
+        description: 创建时间
+        items:
+          type: string
+        type: array
+      deptName:
+        description: 部门名称
+        type: string
+      enabled:
+        description: 是否启用
+        type: boolean
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      parentId:
+        description: 父ID
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.DictDto:
+    properties:
+      id:
+        description: 字典ID
+        example: "0"
+        type: string
+    type: object
+  dto.DictQueryCriteria:
+    properties:
+      keyWords:
+        type: string
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.EmailAccountQueryCriteria:
+    properties:
+      createTime:
+        description: 用户名
+        items:
+          type: string
+        type: array
+      displayName:
+        description: 显示名称
+        type: string
+      email:
+        description: 邮箱
+        type: string
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+      username:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.EmailQueuedQueryCriteria:
+    properties:
+      createTime:
+        description: 时间
+        items:
+          type: string
+        type: array
+      emailAccountId:
+        description: 发件方
+        type: integer
+      id:
+        description: id
+        type: integer
+      isSend:
+        description: 是否已发送
+        type: boolean
+      maxTries:
+        description: 最大发送次数
+        type: integer
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+      to:
+        description: 接收方
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.FileRecordQueryCriteria:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      keyWords:
+        type: string
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.JobDto:
+    properties:
+      id:
+        example: "0"
+        type: string
+      name:
+        type: string
+    type: object
+  dto.JobQueryCriteria:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      enabled:
+        type: boolean
+      jobName:
+        type: string
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.LogQueryCriteria:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      keyWords:
+        type: string
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.MenuIdDto:
+    properties:
+      id:
+        example: "0"
+        type: string
+    type: object
+  dto.MenuQueryCriteria:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      parentId:
+        type: integer
+      title:
+        type: string
+    type: object
+  dto.RoleDto:
+    properties:
+      id:
+        example: "0"
+        type: string
+      name:
+        type: string
+      permission:
+        type: string
+    type: object
+  dto.RoleQueryCriteria:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      roleName:
+        type: string
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.SettingQueryCriteria:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      enabled:
+        type: boolean
+      keyWords:
+        type: string
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  dto.TaskQueryCriteria:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+      taskName:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  permission.Apis:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      description:
+        description: 描述
+        type: string
+      group:
+        description: 组
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      method:
+        description: 请求方法
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+      url:
+        description: 请求路径
+        type: string
+    type: object
+  permission.Department:
+    properties:
+      children:
+        description: 子部门集合
+        items:
+          $ref: '#/definitions/permission.Department'
+        type: array
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      enabled:
+        description: 是否启用
+        type: boolean
+      hasChildren:
+        description: 是否有子级
+        type: boolean
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      label:
+        description: 标题
+        type: string
+      leaf:
+        description: 是否能展开
+        type: boolean
+      name:
+        description: 岗位名称
+        type: string
+      parentId:
+        description: 父级部门ID
+        example: "0"
+        type: string
+      roles:
+        description: 角色列表
+        items:
+          $ref: '#/definitions/permission.Role'
+        type: array
+      sort:
+        description: 排序
+        type: integer
+      subCount:
+        description: 子节点个数
+        type: integer
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+      users:
+        description: 用户列表
+        items:
+          $ref: '#/definitions/permission.User'
+        type: array
+    type: object
+  permission.Job:
+    properties:
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      enabled:
+        description: 是否启用
+        type: boolean
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      name:
+        description: 岗位名称
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    type: object
+  permission.Menu:
+    properties:
+      cache:
+        description: 是否缓存
+        type: boolean
+      children:
+        description: 子菜单集合
+        items:
+          $ref: '#/definitions/permission.Menu'
+        type: array
+      component:
+        description: 组件
+        type: string
+      componentName:
+        description: 组件名称
+        type: string
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      hasChildren:
+        description: 是否有子级
+        type: boolean
+      hidden:
+        description: 是否隐藏
+        type: boolean
+      iFrame:
+        description: 是否iframe
+        type: boolean
+      icon:
+        description: icon图标
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      label:
+        description: 标题
+        type: string
+      leaf:
+        description: 是否能展开
+        type: boolean
+      parentId:
+        description: 父级菜单ID
+        example: "0"
+        type: string
+      path:
+        description: 组件路径
+        type: string
+      permission:
+        description: 权限标识符
+        type: string
+      sort:
+        description: 排序
+        type: integer
+      subCount:
+        description: 子节点个数
+        type: integer
+      title:
+        description: 菜单标题
+        type: string
+      type:
+        description: 类型 1.目录 2.菜单 3.按钮
+        type: integer
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+    type: object
+  permission.Role:
+    properties:
+      apis:
+        description: 菜单列表
+        items:
+          $ref: '#/definitions/permission.Apis'
+        type: array
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      dataScope:
+        description: 数据权限
+        type: string
+      depts:
+        description: 部门列表
+        items:
+          $ref: '#/definitions/permission.Department'
+        type: array
+      description:
+        description: 描述
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      level:
+        description: 角色等级
+        type: integer
+      menus:
+        description: 菜单列表
+        items:
+          $ref: '#/definitions/permission.Menu'
+        type: array
+      name:
+        description: 岗位名称
+        type: string
+      permission:
+        description: 角色代码
+        type: string
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+      users:
+        description: 用户列表
+        items:
+          $ref: '#/definitions/permission.User'
+        type: array
+    type: object
+  permission.User:
+    properties:
+      avatarPath:
+        description: 头像路径
+        type: string
+      createBy:
+        description: 创建者
+        type: string
+      createTime:
+        description: 创建时间
+        type: string
+      dept:
+        $ref: '#/definitions/permission.Department'
+      deptId:
+        description: 部门ID
+        example: "0"
+        type: string
+      email:
+        description: 用户邮箱
+        type: string
+      enabled:
+        description: 是否激活
+        type: boolean
+      gender:
+        description: 性别
+        type: string
+      id:
+        description: 主键编码
+        example: "0"
+        type: string
+      isAdmin:
+        description: 是否管理员
+        type: boolean
+      jobs:
+        items:
+          $ref: '#/definitions/permission.Job'
+        type: array
+      nickName:
+        description: 用户昵称
+        type: string
+      password:
+        description: 登录密码 初始化数据之后可把json设置-不响应给前端
+        type: string
+      passwordReSetTime:
+        description: 密码最后修改时间
+        type: string
+      phone:
+        description: 用户手机号
+        type: string
+      roles:
+        items:
+          $ref: '#/definitions/permission.Role'
+        type: array
+      sex:
+        description: 性别
+        type: boolean
+      updateBy:
+        description: 更新者
+        type: string
+      updateTime:
+        description: 更新时间
+        type: string
+      username:
+        description: 用户名
+        type: string
+    type: object
+  request.IdCollection:
+    properties:
+      idArray:
+        description: id集合
+        items:
+          type: string
+        type: array
+    type: object
+  request.LoginAuthUser:
+    properties:
+      captcha:
+        description: 验证码
+        type: string
+      captchaId:
+        description: 验证码ID
+        type: string
+      password:
+        description: 密码
+        type: string
+      username:
+        description: 用户名
+        type: string
+    required:
+    - captcha
+    - captchaId
+    - password
+    - username
+    type: object
+  request.Pagination:
+    properties:
+      pageIndex:
+        description: 页码
+        type: integer
+      pageSize:
+        description: 每页大小
+        type: integer
+      sortFields:
+        description: 排序
+        items:
+          type: string
+        type: array
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  request.RefreshToken:
+    properties:
+      token:
+        description: 用户名
+        type: string
+    required:
+    - token
+    type: object
+  response.ActionError:
+    properties:
+      errors:
+        additionalProperties:
+          type: string
+        type: object
+    type: object
+  response.ActionResult:
+    properties:
+      actionError:
+        allOf:
+        - $ref: '#/definitions/response.ActionError'
+        description: 错误集合
+      message:
+        description: 消息提示
+        type: string
+      path:
+        description: 请求路径
+        type: string
+      status:
+        description: 状态码
+        type: integer
+      timestamp:
+        description: 时间戳
+        type: integer
+    type: object
+  response.ActionResultPage:
+    properties:
+      content:
+        description: 响应内容
+      totalElements:
+        description: 总条数
+        type: integer
+    type: object
+  response.Captcha:
+    properties:
+      captchaId:
+        type: string
+      img:
+        type: string
+    type: object
+  response.JwtToken:
+    properties:
+      access_token:
+        type: string
+      expires_in:
+        type: integer
+      refresh_token:
+        type: string
+      refresh_token_expires_in:
+        type: integer
+      token_type:
+        type: string
+    type: object
+  response.JwtUser:
+    properties:
+      dataScopes:
+        items:
+          type: string
+        type: array
+      roles:
+        items:
+          type: string
+        type: array
+      user:
+        $ref: '#/definitions/permission.User'
+    type: object
+  response.Login:
+    properties:
+      token:
+        $ref: '#/definitions/response.JwtToken'
+      user:
+        $ref: '#/definitions/response.JwtUser'
+    type: object
+  response.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      msg:
+        type: string
+    type: object
+  response.RoleLevel:
+    properties:
+      level:
+        type: integer
+    type: object
+  response.TreeMenuMeta:
+    properties:
+      icon:
+        type: string
+      noCache:
+        type: boolean
+      title:
+        type: string
+    type: object
+  response.TreeMenuVo:
+    properties:
+      alwaysShow:
+        type: boolean
+      children:
+        items:
+          $ref: '#/definitions/response.TreeMenuVo'
+        type: array
+      component:
+        type: string
+      hidden:
+        type: boolean
+      meta:
+        $ref: '#/definitions/response.TreeMenuMeta'
+      name:
+        type: string
+      path:
+        type: string
+      redirect:
+        type: string
+    type: object
+  utils.Cpu:
+    properties:
+      core:
+        description: 物理核心
+        type: string
+      coreNumber:
+        description: 核心数量
+        type: string
+      idle:
+        description: 剩余
+        type: string
+      logic:
+        description: 逻辑cpu
+        type: string
+      name:
+        description: cpu名称
+        type: string
+      package:
+        description: 物理cpu
+        type: string
+      used:
+        description: 使用
+        type: string
+    type: object
+  utils.Disk:
+    properties:
+      available:
+        type: string
+      total:
+        type: string
+      usageRate:
+        type: string
+      used:
+        type: string
+    type: object
+  utils.Memory:
+    properties:
+      available:
+        type: string
+      total:
+        type: string
+      usageRate:
+        type: string
+      used:
+        type: string
+    type: object
+  utils.ServerResourcesInfo:
+    properties:
+      cpu:
+        $ref: '#/definitions/utils.Cpu'
+      disk:
+        $ref: '#/definitions/utils.Disk'
+      memory:
+        $ref: '#/definitions/utils.Memory'
+      swap:
+        $ref: '#/definitions/utils.Swap'
+      sys:
+        $ref: '#/definitions/utils.Sys'
+      time:
+        type: string
+    type: object
+  utils.Swap:
+    properties:
+      available:
+        type: string
+      total:
+        type: string
+      usageRate:
+        type: string
+      used:
+        type: string
+    type: object
+  utils.Sys:
+    properties:
+      day:
+        description: 运行时间
+        type: string
+      os:
+        description: 服务器系统版本
+        type: string
+      runtimeVersion:
+        description: 业务系统运行时版本
+        type: string
+    type: object
+  vo.ApisTree:
+    properties:
+      children:
+        items:
+          $ref: '#/definitions/vo.ApisTree'
+        type: array
+      hasChildren:
+        type: boolean
+      id:
+        type: integer
+      label:
+        type: string
+      leaf:
+        type: boolean
+    type: object
+info:
+  contact: {}
+paths:
+  /api/auditing/current:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: log request object
+        in: body
+        name: request
+        schema:
+          $ref: '#/definitions/dto.LogQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - AuditLog
+  /api/auditing/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 查询参数
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/dto.LogQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - AuditLog
+  /api/menu/build:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 构建前端路由菜单
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/response.TreeMenuVo'
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 构建前端路由菜单
+      tags:
+      - Menu
+  /api/menu/child:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取所有子级菜单ID
+          schema:
+            items:
+              type: integer
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: 获取所有子级菜单ID
+      tags:
+      - Menu
+  /api/menu/lazy:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取子菜单
+          schema:
+            $ref: '#/definitions/permission.Menu'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取子菜单
+      tags:
+      - Menu
+  /api/menu/superior:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取同级、父级菜单
+          schema:
+            $ref: '#/definitions/permission.Menu'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取同级、父级菜单
+      tags:
+      - Menu
+  /api/online/out:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID集合
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 用户登出
+      tags:
+      - OnlineUser
+  /api/online/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: ' '
+        in: body
+        name: request
+        schema:
+          $ref: '#/definitions/request.Pagination'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - OnlineUser
+  /api/permissions/apis/edit:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateJobDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateRoleDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 更新角色Apis关联
+      tags:
+      - RolePermissionApi
+  /api/permissions/apis/query:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            items:
+              $ref: '#/definitions/vo.ApisTree'
+            type: array
+      summary: 查询
+      tags:
+      - RolePermissionApi
+  /api/permissions/menus/edit:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateJobDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateRoleDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 更新角色菜单关联
+      tags:
+      - RolePermissionApi
+  /api/permissions/menus/query:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            items:
+              $ref: '#/definitions/permission.Menu'
+            type: array
+      summary: 查询
+      tags:
+      - RolePermissionApi
+  /api/service/resources/info:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/utils.ServerResourcesInfo'
+      summary: 查询
+      tags:
+      - ServerResourcesInfo
+  /apis/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateApisDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateApisDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Apis
+  /apis/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Apis
+  /apis/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateApisDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateApisDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Apis
+  /apis/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Apis request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ApisQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Apis
+  /appSecret/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateAppSecretDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateAppSecretDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - AppSecret
+  /appSecret/download:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: AppSecret request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AppSecretQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 导出
+      tags:
+      - AppSecret
+  /appSecret/edit:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - AppSecret
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateAppSecretDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateAppSecretDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - AppSecret
+  /appSecret/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: AppSecret request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AppSecretQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - AppSecret
+  /auth/captcha:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 生成验证码,返回包括随机数id,base64
+          schema:
+            $ref: '#/definitions/response.Captcha'
+      security:
+      - ApiKeyAuth: []
+      summary: 生成验证码
+      tags:
+      - Auth
+  /auth/code/reset/email:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 发送成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 获取邮箱验证码
+      tags:
+      - Auth
+  /auth/info:
+    post:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 返回包括用户信息,token,过期时间
+          schema:
+            $ref: '#/definitions/response.JwtUser'
+      summary: 获取用户信息
+      tags:
+      - Auth
+  /auth/login:
+    post:
+      parameters:
+      - description: 用户名, 密码, 验证码 随机数
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.LoginAuthUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 返回包括用户信息,token,过期时间
+          schema:
+            $ref: '#/definitions/response.Login'
+      summary: 用户登录
+      tags:
+      - Auth
+  /auth/logout:
+    delete:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 登出成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 用户登出
+      tags:
+      - Auth
+  /auth/refreshToken:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: token值
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.RefreshToken'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 返回包括用户信息,token,过期时间
+          schema:
+            $ref: '#/definitions/response.JwtToken'
+      summary: 刷新Token，以旧换新
+      tags:
+      - Auth
+  /dept/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateDeptDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateDeptDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Dept
+  /dept/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Dept
+  /dept/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateDeptDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateDeptDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Dept
+  /dept/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Dept request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.DeptQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Dept
+  /dept/superior:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Dept
+  /dict/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateDictDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateDictDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Dict
+  /dict/download:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Dict request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.DictQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Dict
+  /dict/edit:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Dict
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateDictDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateDictDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Dict
+  /dict/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Dict request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.DictQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Dict
+  /dictDetail/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateDictDetailDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateDictDetailDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - DictDetail
+  /dictDetail/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: query
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Dict
+  /dictDetail/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateDictDetailDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateDictDetailDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - DictDetail
+  /dictDetail/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: dictName
+        in: query
+        name: dictName
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - DictDetail
+  /email/account/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateEmailAccountDto
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateEmailAccountDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - EmailAccount
+  /email/account/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - EmailAccount
+  /email/account/download:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.EmailAccountQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 导出
+      tags:
+      - EmailAccount
+  /email/account/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateEmailAccountDto
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateEmailAccountDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - EmailAccount
+  /email/account/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.EmailAccountQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - EmailAccount
+  /email/template/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateEmailMessageTemplateDto
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateEmailMessageTemplateDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - EmailMessageTemplate
+  /email/template/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - EmailMessageTemplate
+  /email/template/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateEmailMessageTemplateDto
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateEmailMessageTemplateDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - EmailMessageTemplate
+  /email/template/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateEmailMessageTemplateDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - EmailMessageTemplate
+  /exception/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: log request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LogQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - ExceptionLog
+  /job/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateJobDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateJobDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Job
+  /job/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Job
+  /job/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateJobDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateJobDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Job
+  /job/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Job request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.JobQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Job
+  /job/queryAll:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询全部岗位
+      tags:
+      - Job
+  /menu/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateMenuDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateMenuDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Menu
+  /menu/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Menu
+  /menu/download:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Role request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RoleQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Menu
+  /menu/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateMenuDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateMenuDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Menu
+  /menu/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Menu request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.MenuQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Menu
+  /queued/email/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateEmailQueuedDto
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateEmailQueuedDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - QueuedEmail
+  /queued/email/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - QueuedEmail
+  /queued/email/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateEmailQueuedDto
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateEmailQueuedDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - QueuedEmail
+  /queued/email/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.EmailQueuedQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - QueuedEmail
+  /role/all:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            items:
+              $ref: '#/definitions/permission.Role'
+            type: array
+      summary: 查询全部角色
+      tags:
+      - Role
+  /role/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateRoleDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateRoleDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Role
+  /role/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Role
+  /role/download:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Role request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RoleQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Role
+  /role/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateJobDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateRoleDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Role
+  /role/level:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.RoleLevel'
+      summary: 查询
+      tags:
+      - Role
+  /role/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Role request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RoleQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Role
+  /role/querySingle:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查看单一角色
+      tags:
+      - Role
+  /setting/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateSettingDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateSettingDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Setting
+  /setting/download:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Setting request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SettingQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Setting
+  /setting/edit:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Setting
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateSettingDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateSettingDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Setting
+  /setting/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Setting request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SettingQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Setting
+  /storage/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Storage
+  /storage/download:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: FileRecord request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.FileRecordQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 导出成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 导出
+      tags:
+      - FileRecord
+  /storage/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateFileRecordDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateFileRecordDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Storage
+  /storage/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: FileRecord request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.FileRecordQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - FileRecord
+  /storage/upload:
+    post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - description: 上传文件示例
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      security:
+      - ApiKeyAuth: []
+      summary: 上传文件
+      tags:
+      - Storage
+  /task/download:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Task request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TaskQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Task
+  /tasks/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateTaskDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateTaskDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Task
+  /tasks/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Task
+  /tasks/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateTaskDto object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateTaskDto'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Task
+  /tasks/execute:
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 执行成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 执行
+      tags:
+      - Task
+  /tasks/pause:
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 暂停成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 暂停
+      tags:
+      - Task
+  /tasks/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: TaskQueryCriteria object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TaskQueryCriteria'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Task
+  /tasks/resume:
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 暂停成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 暂停
+      tags:
+      - Task
+  /user/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateUserReq object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateUserReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - User
+  /user/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - User
+  /user/edit:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateUpdateUserReq object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUpdateUserReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 修改
+      tags:
+      - User
+  /user/query:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码, 每页大小
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.Pagination'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 分页获取用户列表,返回包括列表,总数,页码,每页数量
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/response.ActionResultPage'
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 分页获取用户列表
+      tags:
+      - UserApe
+swagger: "2.0"

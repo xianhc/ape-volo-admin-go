@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1311994912685690880",
+    "Email": "your email",
+    "DisplayName": "your dispalyName",
+    "Host": "smtp.qq.com",
+    "Port": 465,
+    "Username": "your name",
+    "Password": "your pass",
+    "EnableSsl": true,
+    "UseDefaultCredentials": false,
+    "CreateBy": "apevolo",
+    "CreateTime": "2024-01-01T00:00:00Z",
+    "UpdateBy": null,
+    "UpdateTime": null,
+    "IsDeleted": false
+  }
+]
