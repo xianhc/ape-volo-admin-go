@@ -7,15 +7,15 @@
 - 账号密码： `apevolo / 123456`
 
 #### 💒代码仓库(api)
-- go 版本(Github) <a href="https://github.com/xianhc/ape-volo-admin-go" target="_blank">https://github.com/xianhc/ape-volo-admin-go</a>
-- go 版本(Gitee) <a href="https://gitee.com/xianhc/ape-volo-admin-go" target="_blank">https://gitee.com/xianhc/ape-volo-admin-go</a>
+- net 版本(Github) <a href="https://github.com/xianhc/ApeVolo.Admin" target="_blank">https://github.com/xianhc/ApeVolo.Admin</a>
+- net 版本(Gitee) <a href="https://gitee.com/xianhc/ApeVolo.Admin" target="_blank">https://gitee.com/xianhc/ApeVolo.Admin</a>
 <br><br>
-- net 版本(Github) <a href="https://github.com/xianhc/ape-volo-admin" target="_blank">https://github.com/xianhc/ape-volo-admin</a>
-- net 版本(Gitee) <a href="https://gitee.com/xianhc/ape-volo-admin" target="_blank">https://gitee.com/xianhc/ape-volo-admin</a>
+- go 版本(Github) <a href="https://github.com/xianhc/ApeVolo.AdminGO" target="_blank">https://github.com/xianhc/ApeVolo.AdminGO</a>
+- go 版本(Gitee) <a href="https://gitee.com/xianhc/ApeVolo.AdminGO" target="_blank">https://gitee.com/xianhc/ApeVolo.adminGO</a>
 
 #### 💒代码仓库(web)
-- vue2.x 版本(Github) <a href="https://github.com/xianhc/ape-volo-web" target="_blank">https://github.com/xianhc/ape-volo-web</a>
-- vue2.x 版本(Gitee) <a href="https://gitee.com/xianhc/ape-volo-web" target="_blank">https://gitee.com/xianhc/ape-volo-web</a>
+- vue2.x 版本(Github) <a href="https://github.com/xianhc/ApeVolo.Web" target="_blank">https://github.com/xianhc/ApeVolo.Web</a>
+- vue2.x 版本(Gitee) <a href="https://gitee.com/xianhc/ApeVolo.Web" target="_blank">https://gitee.com/xianhc/ApeVolo.Web</a>
 
 #### ⚙️模块说明
 
@@ -95,7 +95,7 @@ GoLand版本 >= v1.23
 
 
 #### 💡其他
-<a target="_blank" href="https://github.com/xianhc/ape-volo-admin">ape-volo-admin</a> 是一个主要基于 .NET Core 的开源框架<br>
-同时我也使用 Go 语言开发了一个功能完全复刻的版本 <a target="_blank" href="https://github.com/xianhc/ape-volo-admin-go">ape-volo-admin-go</a><br>
+<a target="_blank" href="https://github.com/xianhc/ApeVolo.Admin">ApeVolo.Admin</a> 是一个主要基于 .NET Core 的开源框架<br>
+同时我也使用 Go 语言开发了一个功能完全复刻的版本 <a target="_blank" href="https://github.com/xianhc/ApeVolo.AdminGO">ApeVolo.AdminGO</a><br>
 尽管当前 Go 版本的功能尚未完全与 .NET Core 版本对等，但我正在逐步完善<br>
 目标是确保 Go 版本具备与 .NET Core 版本完全一致的功能
