@@ -1,0 +1,79 @@
+[
+  {
+    "Id": 163519427764325,
+    "CreatorId": 163519427764300,
+    "DictType": 1,
+    "Name": "dict_type",
+    "Description": "字典类型(系统or业务)"
+  },
+  {
+    "Id": 163519427764328,
+    "CreatorId": 163519427764300,
+    "DictType": 2,
+    "Name": "status_type",
+    "Description": "启用禁用状态"
+  },
+  {
+    "Id": 163519427764343,
+    "CreatorId": 163519427764300,
+    "DictType": 1,
+    "Name": "task_trigger_type",
+    "Description": "作业触发器类型"
+  },
+  {
+    "Id": 163519427764349,
+    "CreatorId": 163519427764300,
+    "DictType": 1,
+    "Name": "db_type",
+    "Description": "数据库类型"
+  },
+  {
+    "Id": 163519427768391,
+    "CreatorId": 163519427764300,
+    "DictType": 2,
+    "Name": "data_scope_type",
+    "Description": "数据权限"
+  },
+  {
+    "Id": 163519427768392,
+    "CreatorId": 163519427764300,
+    "DictType": 2,
+    "Name": "http_method",
+    "Description": "Http请求方法"
+  },
+  {
+    "Id": 163519427768393,
+    "CreatorId": 163519427764300,
+    "DictType": 2,
+    "Name": "menu_type",
+    "Description": "菜单类型"
+  },
+  {
+    "Id": 163519427768394,
+    "CreatorId": 163519427764300,
+    "DictType": 2,
+    "Name": "badge_type",
+    "Description": "徽章类型"
+  },
+  {
+    "Id": 163519427768395,
+    "CreatorId": 163519427764300,
+    "DictType": 2,
+    "Name": "gender_code",
+    "Description": "性别"
+  },
+  {
+    "Id": 183847050895429,
+    "CreatorId": 163519427764300,
+    "DictType": 2,
+    "Name": "task_trigger_state",
+    "Description": "作业触发器状态"
+  },
+  {
+    "Id": 2119361429127139328,
+    "CreatorId": 163519427764300,
+    "DictType": 2,
+    "Name": "priority_type",
+    "Description": "邮件队列优先级"
+  }
+]

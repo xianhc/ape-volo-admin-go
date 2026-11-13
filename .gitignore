@@ -1,17 +1,56 @@
-.idea/
 .DS_Store
 
-# Editor directories and files
-.idea
-.vscode
+# 编辑器
+.idea/
+.vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# 构建产物（统一输出到 bin/，不落仓库根目录）
+/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# 运行期产物
+/logs/
+/sqlite/
+# 旧 SQLite 目录（已迁移到 sqlite/，文件被占用时可能残留，忽略以免误提交）
+/data/
 *.log
 *.db
+*.db-shm
+*.db-wal
+
+# 依赖目录：本仓库统一走 module 模式
 /vendor
 
+# 项目内置 RSA 密钥需要纳入版本控制
+!/resource/keys/password-private.pem
 
+# 本地配置覆盖（config.yaml 本身需要入库，config.xxx.yaml 视为本地副本）
+/config.local.yaml
+/config.local.yml
+/config.*.yaml
 
+# 临时验证目录
+/.tmp-test/
+/.tmp-log-verify/
+
+# 用户上传：默认不入库，仅保留仓库内置的种子图（头像/示例图片）
+# 注意：git 不允许在父目录被忽略时单独放行子文件，所以要逐级放行目录。
+/uploads/*
+!/uploads/file/
+/uploads/file/*
+!/uploads/file/avatar/
+!/uploads/file/images/
+/uploads/file/avatar/*
+!/uploads/file/avatar/20231010143458_1711631391147429888.png
+/uploads/file/images/*
+!/uploads/file/images/20240406164744_1776532227421638657.jpg
+!/uploads/file/images/20240411164129_1778342595131346945.png

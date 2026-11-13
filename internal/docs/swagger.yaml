@@ -1,0 +1,2591 @@
+definitions:
+  appsecret.CreateAndUpdateAppSecretRequest:
+    properties:
+      appName:
+        type: string
+      id:
+        example: "0"
+        type: string
+      remark:
+        type: string
+    required:
+    - appName
+    type: object
+  appsecret.QueryAppSecretRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      keyWords:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  department.CreateAndUpdateDepartmentRequest:
+    properties:
+      enabled:
+        type: boolean
+      id:
+        example: "0"
+        type: string
+      name:
+        type: string
+      parentId:
+        example: "0"
+        type: string
+      sort:
+        maximum: 999
+        minimum: 1
+        type: integer
+    required:
+    - name
+    - sort
+    type: object
+  department.DepartmentResponse:
+    properties:
+      children:
+        items:
+          $ref: '#/definitions/department.DepartmentResponse'
+        type: array
+      creationTime:
+        type: string
+      creatorId:
+        example: "0"
+        type: string
+      deleterId:
+        example: "0"
+        type: string
+      deletionTime:
+        type: string
+      enabled:
+        type: boolean
+      hasChildren:
+        type: boolean
+      id:
+        example: "0"
+        type: string
+      label:
+        type: string
+      lastModificationTime:
+        type: string
+      lastModifierId:
+        example: "0"
+        type: string
+      leaf:
+        type: boolean
+      name:
+        type: string
+      parentId:
+        example: "0"
+        type: string
+      sort:
+        type: integer
+    type: object
+  department.QueryDepartmentRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      deptName:
+        type: string
+      enabled:
+        type: boolean
+      name:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      parentId:
+        type: integer
+      sorting:
+        type: string
+    type: object
+  dict.CreateAndUpdateDictDetailRequest:
+    properties:
+      dict:
+        $ref: '#/definitions/dict.DictReference'
+      dictSort:
+        maximum: 999
+        minimum: 1
+        type: integer
+      id:
+        example: "0"
+        type: string
+      label:
+        type: string
+      value:
+        type: string
+    required:
+    - dictSort
+    - label
+    - value
+    type: object
+  dict.CreateAndUpdateDictRequest:
+    properties:
+      description:
+        type: string
+      id:
+        example: "0"
+        type: string
+      name:
+        type: string
+    required:
+    - description
+    - name
+    type: object
+  dict.DictDetailResponse:
+    properties:
+      creationTime:
+        type: string
+      creatorId:
+        example: "0"
+        type: string
+      deleterId:
+        example: "0"
+        type: string
+      deletionTime:
+        type: string
+      dictId:
+        example: "0"
+        type: string
+      dictSort:
+        type: integer
+      id:
+        example: "0"
+        type: string
+      label:
+        type: string
+      lastModificationTime:
+        type: string
+      lastModifierId:
+        example: "0"
+        type: string
+      value:
+        type: string
+    type: object
+  dict.DictReference:
+    properties:
+      id:
+        example: "0"
+        type: string
+    type: object
+  dict.DictResponse:
+    properties:
+      creationTime:
+        type: string
+      creatorId:
+        example: "0"
+        type: string
+      deleterId:
+        example: "0"
+        type: string
+      deletionTime:
+        type: string
+      description:
+        type: string
+      dictDetails:
+        items:
+          $ref: '#/definitions/dict.DictDetailResponse'
+        type: array
+      dictType:
+        type: integer
+      id:
+        example: "0"
+        type: string
+      lastModificationTime:
+        type: string
+      lastModifierId:
+        example: "0"
+        type: string
+      name:
+        type: string
+    type: object
+  dict.QueryDictRequest:
+    properties:
+      keyWords:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  emailaccount.AccountResponse:
+    properties:
+      creationTime:
+        type: string
+      creatorId:
+        example: "0"
+        type: string
+      deleterId:
+        example: "0"
+        type: string
+      deletionTime:
+        type: string
+      displayName:
+        type: string
+      email:
+        type: string
+      enableSsl:
+        type: boolean
+      host:
+        type: string
+      id:
+        example: "0"
+        type: string
+      lastModificationTime:
+        type: string
+      lastModifierId:
+        example: "0"
+        type: string
+      password:
+        type: string
+      port:
+        type: integer
+      useDefaultCredentials:
+        type: boolean
+      userName:
+        type: string
+    type: object
+  emailaccount.CreateAndUpdateAccountRequest:
+    properties:
+      displayName:
+        type: string
+      email:
+        type: string
+      enableSsl:
+        type: boolean
+      host:
+        type: string
+      id:
+        example: "0"
+        type: string
+      password:
+        type: string
+      port:
+        type: integer
+      useDefaultCredentials:
+        type: boolean
+      userName:
+        type: string
+    required:
+    - displayName
+    - email
+    - host
+    - userName
+    type: object
+  emailaccount.QueryAccountRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      displayName:
+        type: string
+      email:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+      userName:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  emailtemplate.CreateAndUpdateTemplateRequest:
+    properties:
+      bccEmailAddresses:
+        type: string
+      body:
+        type: string
+      emailAccountId:
+        type: integer
+      enabled:
+        type: boolean
+      id:
+        example: "0"
+        type: string
+      name:
+        type: string
+      subject:
+        type: string
+    required:
+    - body
+    - name
+    - subject
+    type: object
+  emailtemplate.QueryTemplateRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      enabled:
+        type: boolean
+      name:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  exceptionlog.QueryExceptionLogRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      keyWords:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  filerecord.CreateAndUpdateFileRecordRequest:
+    properties:
+      description:
+        type: string
+      id:
+        example: "0"
+        type: string
+    required:
+    - description
+    type: object
+  filerecord.QueryFileRecordRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      keyWords:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  job.CreateAndUpdateJobRequest:
+    properties:
+      alertEmail:
+        type: string
+      assemblyName:
+        type: string
+      className:
+        type: string
+      cron:
+        type: string
+      cycleRunTimes:
+        type: integer
+      description:
+        type: string
+      enabled:
+        type: boolean
+      endTime:
+        type: string
+      id:
+        example: "0"
+        type: string
+      intervalSecond:
+        type: integer
+      jobGroup:
+        type: string
+      jobName:
+        type: string
+      pauseAfterFailure:
+        type: boolean
+      principal:
+        type: string
+      runParams:
+        type: string
+      startTime:
+        type: string
+      triggerType:
+        type: integer
+    required:
+    - assemblyName
+    - className
+    - jobGroup
+    - jobName
+    type: object
+  job.JobResponse:
+    properties:
+      alertEmail:
+        type: string
+      assemblyName:
+        type: string
+      className:
+        type: string
+      creationTime:
+        type: string
+      creatorId:
+        example: "0"
+        type: string
+      cron:
+        type: string
+      cycleRunTimes:
+        type: integer
+      deleterId:
+        example: "0"
+        type: string
+      deletionTime:
+        type: string
+      description:
+        type: string
+      enabled:
+        type: boolean
+      endTime:
+        type: string
+      id:
+        example: "0"
+        type: string
+      intervalSecond:
+        type: integer
+      jobGroup:
+        type: string
+      jobName:
+        type: string
+      lastModificationTime:
+        type: string
+      lastModifierId:
+        example: "0"
+        type: string
+      pauseAfterFailure:
+        type: boolean
+      principal:
+        type: string
+      runParams:
+        type: string
+      startTime:
+        type: string
+      triggerState:
+        type: integer
+      triggerType:
+        type: integer
+    type: object
+  job.QueryJobRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      jobName:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  operatelog.QueryCurrentRequest:
+    properties:
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  operatelog.QueryOperateLogRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      keyWords:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  position.CreateAndUpdatePositionRequest:
+    properties:
+      enabled:
+        type: boolean
+      id:
+        example: "0"
+        type: string
+      name:
+        type: string
+      sort:
+        maximum: 999
+        minimum: 1
+        type: integer
+    required:
+    - name
+    - sort
+    type: object
+  position.QueryPositionRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      enabled:
+        type: boolean
+      jobName:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  queuedemail.CreateAndUpdateQueuedEmailRequest:
+    properties:
+      bcc:
+        type: string
+      body:
+        type: string
+      cc:
+        type: string
+      emailAccountId:
+        type: integer
+      from:
+        type: string
+      fromName:
+        type: string
+      id:
+        example: "0"
+        type: string
+      priority:
+        type: integer
+      replyTo:
+        type: string
+      replyToName:
+        type: string
+      sendTime:
+        type: string
+      sentTries:
+        type: integer
+      subject:
+        type: string
+      to:
+        type: string
+      toName:
+        type: string
+    required:
+    - body
+    - to
+    type: object
+  queuedemail.QueryQueuedEmailRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      emailAccountId:
+        type: integer
+      id:
+        type: integer
+      isSend:
+        type: boolean
+      maxTries:
+        type: integer
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+      to:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  request.EmailCode:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  request.IdCollection:
+    properties:
+      idArray:
+        description: id集合
+        items:
+          type: string
+        type: array
+    type: object
+  request.LoginAuthUser:
+    properties:
+      captcha:
+        description: 验证码
+        type: string
+      captchaId:
+        description: 验证码ID
+        type: string
+      password:
+        description: 密码
+        type: string
+      userName:
+        description: 用户名
+        type: string
+    required:
+    - captchaId
+    - password
+    - userName
+    type: object
+  request.RefreshToken:
+    properties:
+      token:
+        description: 用户名
+        type: string
+    required:
+    - token
+    type: object
+  response.ActionError:
+    properties:
+      errors:
+        additionalProperties:
+          type: string
+        type: object
+    type: object
+  response.ActionResult:
+    properties:
+      actionError:
+        allOf:
+        - $ref: '#/definitions/response.ActionError'
+        description: 错误集合
+      isSuccess:
+        description: 是否成功
+        type: boolean
+      message:
+        description: 消息提示
+        type: string
+      path:
+        description: 请求路径
+        type: string
+      status:
+        description: 状态码
+        type: integer
+      timestamp:
+        description: 时间戳
+        type: integer
+    type: object
+  response.ActionResultPage:
+    properties:
+      items:
+        description: 当前页结果项
+      totalCount:
+        description: 分页前的总条数
+        type: integer
+    type: object
+  response.Captcha:
+    properties:
+      captchaId:
+        type: string
+      img:
+        type: string
+      showCaptcha:
+        type: boolean
+    type: object
+  response.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      msg:
+        type: string
+    type: object
+  serverresources.CPUResponse:
+    properties:
+      core:
+        type: string
+      coreNumber:
+        type: string
+      idle:
+        type: string
+      logic:
+        type: string
+      name:
+        type: string
+      package:
+        type: string
+      used:
+        type: string
+    type: object
+  serverresources.DiskResponse:
+    properties:
+      available:
+        type: string
+      total:
+        type: string
+      usageRate:
+        type: string
+      used:
+        type: string
+    type: object
+  serverresources.MemoryResponse:
+    properties:
+      available:
+        type: string
+      total:
+        type: string
+      usageRate:
+        type: string
+      used:
+        type: string
+    type: object
+  serverresources.ServerResourcesResponse:
+    properties:
+      cpu:
+        $ref: '#/definitions/serverresources.CPUResponse'
+      disk:
+        $ref: '#/definitions/serverresources.DiskResponse'
+      memory:
+        $ref: '#/definitions/serverresources.MemoryResponse'
+      swap:
+        $ref: '#/definitions/serverresources.SwapResponse'
+      sys:
+        $ref: '#/definitions/serverresources.SystemResponse'
+      time:
+        type: string
+    type: object
+  serverresources.SwapResponse:
+    properties:
+      available:
+        type: string
+      total:
+        type: string
+      usageRate:
+        type: string
+      used:
+        type: string
+    type: object
+  serverresources.SystemResponse:
+    properties:
+      day:
+        type: string
+      os:
+        type: string
+      runtimeVersion:
+        type: string
+    type: object
+  setting.CreateAndUpdateSettingRequest:
+    properties:
+      description:
+        type: string
+      enabled:
+        type: boolean
+      id:
+        example: "0"
+        type: string
+      name:
+        type: string
+      value:
+        type: string
+    required:
+    - name
+    - value
+    type: object
+  setting.QuerySettingRequest:
+    properties:
+      createTime:
+        items:
+          type: string
+        type: array
+      enabled:
+        type: boolean
+      keyWords:
+        type: string
+      pageIndex:
+        maximum: 1000000
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+      sorting:
+        type: string
+    required:
+    - pageIndex
+    - pageSize
+    type: object
+  utils.JwtToken:
+    properties:
+      accessToken:
+        description: AccessToken 访问令牌
+        type: string
+      expires:
+        description: Expires 访问令牌过期时刻，Unix 毫秒时间戳
+        type: integer
+      refreshToken:
+        description: RefreshToken 刷新令牌，每次刷新后必须保存新值，不能用于访问接口
+        type: string
+      refreshTokenExpires:
+        description: RefreshTokenExpires 会话绝对截止时刻，Unix 毫秒时间戳，刷新不会延长
+        type: integer
+      sessionId:
+        description: SessionId 本次登录的会话标识，不可用于认证
+        type: string
+      tokenType:
+        description: TokenType 令牌类型
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /app-secret/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateAppSecretRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/appsecret.CreateAndUpdateAppSecretRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - AppSecret
+  /app-secret/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - AppSecret
+  /app-secret/download:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: AppSecret request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/appsecret.QueryAppSecretRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 导出
+      tags:
+      - AppSecret
+  /app-secret/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: AppSecret request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/appsecret.QueryAppSecretRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - AppSecret
+  /app-secret/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateAppSecretRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/appsecret.CreateAndUpdateAppSecretRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - AppSecret
+  /auth/captcha:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Captcha'
+      summary: 生成验证码
+      tags:
+      - Auth
+  /auth/info:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 获取用户信息
+      tags:
+      - Auth
+  /auth/login:
+    post:
+      parameters:
+      - description: 用户名, 密码, 验证码
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.LoginAuthUser'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 用户登录
+      tags:
+      - Auth
+  /auth/logout:
+    delete:
+      parameters:
+      - description: 刷新凭证
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/request.RefreshToken'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 用户登出
+      tags:
+      - Auth
+  /auth/refresh-token:
+    post:
+      parameters:
+      - description: token值
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.RefreshToken'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.JwtToken'
+      summary: 刷新Token，以旧换新
+      tags:
+      - Auth
+  /auth/reset-email-code:
+    post:
+      parameters:
+      - description: 邮箱地址
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/request.EmailCode'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 获取邮箱验证码
+      tags:
+      - Auth
+  /department/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateDepartmentRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/department.CreateAndUpdateDepartmentRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Dept
+  /department/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Dept
+  /department/download:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Dept request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/department.QueryDepartmentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Dept
+  /department/get-all:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 部门列表
+          schema:
+            items:
+              $ref: '#/definitions/department.DepartmentResponse'
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: 查询全部部门
+      tags:
+      - Dept
+  /department/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Dept request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/department.QueryDepartmentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Dept
+  /department/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateDepartmentRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/department.CreateAndUpdateDepartmentRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Dept
+  /dict-detail/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateDictDetailRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dict.CreateAndUpdateDictDetailRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - DictDetail
+  /dict-detail/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        format: int64
+        in: query
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Dict
+  /dict-detail/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: dictName
+        in: query
+        name: dictName
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - DictDetail
+  /dict-detail/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateDictDetailRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dict.CreateAndUpdateDictDetailRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - DictDetail
+  /dict/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateDictRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dict.CreateAndUpdateDictRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Dict
+  /dict/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Dict
+  /dict/download:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Dict request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dict.QueryDictRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Dict
+  /dict/get-by-name:
+    get:
+      parameters:
+      - description: 字典名称
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 字典及其详情
+          schema:
+            $ref: '#/definitions/dict.DictResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: 按字典名称查询
+      tags:
+      - Dict
+  /dict/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Dict request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dict.QueryDictRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Dict
+  /dict/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateDictRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dict.CreateAndUpdateDictRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Dict
+  /email-account/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateAccountRequest
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/emailaccount.CreateAndUpdateAccountRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - EmailAccount
+  /email-account/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - EmailAccount
+  /email-account/get-all:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 账户列表
+          schema:
+            items:
+              $ref: '#/definitions/emailaccount.AccountResponse'
+            type: array
+      summary: 查询全部邮箱账户
+      tags:
+      - EmailAccount
+  /email-account/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/emailaccount.QueryAccountRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - EmailAccount
+  /email-account/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateAccountRequest
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/emailaccount.CreateAndUpdateAccountRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - EmailAccount
+  /email-message-template/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateTemplateRequest
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/emailtemplate.CreateAndUpdateTemplateRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - EmailMessageTemplate
+  /email-message-template/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - EmailMessageTemplate
+  /email-message-template/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/emailtemplate.QueryTemplateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - EmailMessageTemplate
+  /email-message-template/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateTemplateRequest
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/emailtemplate.CreateAndUpdateTemplateRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - EmailMessageTemplate
+  /exception-log/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: log request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/exceptionlog.QueryExceptionLogRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - ExceptionLog
+  /file-record/create:
+    post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - description: 上传文件示例
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      security:
+      - ApiKeyAuth: []
+      summary: 上传文件
+      tags:
+      - Storage
+  /file-record/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Storage
+  /file-record/download:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: FileRecord request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/filerecord.QueryFileRecordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 导出成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 导出
+      tags:
+      - FileRecord
+  /file-record/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: FileRecord request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/filerecord.QueryFileRecordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - FileRecord
+  /file-record/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateFileRecordRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/filerecord.CreateAndUpdateFileRecordRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Storage
+  /job-log/download:
+    post:
+      parameters:
+      - in: query
+        name: isSuccess
+        type: boolean
+      - in: query
+        name: jobGroup
+        type: string
+      - in: query
+        name: jobName
+        type: string
+      - in: query
+        maximum: 1000000
+        minimum: 1
+        name: pageIndex
+        required: true
+        type: integer
+      - in: query
+        maximum: 1000
+        minimum: 1
+        name: pageSize
+        required: true
+        type: integer
+      - in: query
+        name: sorting
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 文件流
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: 导出任务执行日志
+      tags:
+      - ScheduledJobLog
+  /job-log/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        name: isSuccess
+        type: boolean
+      - in: query
+        name: jobGroup
+        type: string
+      - in: query
+        name: jobName
+        type: string
+      - in: query
+        maximum: 1000000
+        minimum: 1
+        name: pageIndex
+        required: true
+        type: integer
+      - in: query
+        maximum: 1000
+        minimum: 1
+        name: pageSize
+        required: true
+        type: integer
+      - in: query
+        name: sorting
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 任务执行日志列表
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/response.ActionResultPage'
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 分页获取任务执行日志
+      tags:
+      - ScheduledJobLog
+  /job-manager/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateJobRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/job.CreateAndUpdateJobRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Job
+  /job-manager/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Job
+  /job-manager/execute:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 执行成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 执行
+      tags:
+      - Job
+  /job-manager/pause:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 暂停成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 暂停
+      tags:
+      - Job
+  /job-manager/restart:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 重新调度成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 重新调度
+      tags:
+      - Job
+  /job-manager/resume:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 暂停成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 暂停
+      tags:
+      - Job
+  /job-manager/stop:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 停止成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 停止调度
+      tags:
+      - Job
+  /job-manager/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateJobRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/job.CreateAndUpdateJobRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Job
+  /job/download:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Task request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/job.QueryJobRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Job
+  /job/get-all:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 任务列表
+          schema:
+            items:
+              $ref: '#/definitions/job.JobResponse'
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: 查询全部定时任务
+      tags:
+      - Job
+  /job/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: QueryJobRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/job.QueryJobRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Job
+  /menu/build-tree:
+    post:
+      responses: {}
+      tags:
+      - Menu
+  /menu/create:
+    post:
+      responses: {}
+      tags:
+      - Menu
+  /menu/delete:
+    delete:
+      responses: {}
+      tags:
+      - Menu
+  /menu/download:
+    post:
+      responses: {}
+      tags:
+      - Menu
+  /menu/get-all:
+    get:
+      responses: {}
+      tags:
+      - Menu
+  /menu/get-list:
+    get:
+      responses: {}
+      tags:
+      - Menu
+  /menu/update:
+    put:
+      responses: {}
+      tags:
+      - Menu
+  /online/download:
+    get:
+      responses: {}
+      tags:
+      - OnlineUser
+  /online/get-list:
+    get:
+      responses: {}
+      tags:
+      - OnlineUser
+  /online/out:
+    delete:
+      responses: {}
+      tags:
+      - OnlineUser
+  /operate-log/get-by-current:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: log request object
+        in: body
+        name: request
+        schema:
+          $ref: '#/definitions/operatelog.QueryCurrentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - AuditLog
+  /operate-log/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 查询参数
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/operatelog.QueryOperateLogRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - AuditLog
+  /operate-log/get-operation-number:
+    get:
+      parameters:
+      - description: 天数，默认 7
+        in: query
+        name: days
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 每天的操作数
+          schema:
+            items:
+              type: integer
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: 统计最近 N 天每天的操作数
+      tags:
+      - AuditLog
+  /position/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdatePositionRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/position.CreateAndUpdatePositionRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Position
+  /position/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Position
+  /position/download:
+    post:
+      responses: {}
+      tags:
+      - Position
+  /position/get-all:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询全部岗位
+      tags:
+      - Position
+  /position/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Job request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/position.QueryPositionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Position
+  /position/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdatePositionRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/position.CreateAndUpdatePositionRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Position
+  /queued-email/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateQueuedEmailRequest
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/queuedemail.CreateAndUpdateQueuedEmailRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - QueuedEmail
+  /queued-email/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - QueuedEmail
+  /queued-email/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/queuedemail.QueryQueuedEmailRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - QueuedEmail
+  /queued-email/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateQueuedEmailRequest
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/queuedemail.CreateAndUpdateQueuedEmailRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - QueuedEmail
+  /role/create:
+    post:
+      responses: {}
+      tags:
+      - Role
+  /role/delete:
+    delete:
+      responses: {}
+      tags:
+      - Role
+  /role/download:
+    post:
+      responses: {}
+      tags:
+      - Role
+  /role/get-all:
+    get:
+      responses: {}
+      tags:
+      - Role
+  /role/get-list:
+    get:
+      responses: {}
+      tags:
+      - Role
+  /role/get-with-details:
+    get:
+      responses: {}
+      tags:
+      - Role
+  /role/update:
+    put:
+      responses: {}
+      tags:
+      - Role
+  /role/update-role-menu:
+    put:
+      responses: {}
+      tags:
+      - Role
+  /server-resources/get-list:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/serverresources.ServerResourcesResponse'
+      summary: 查询
+      tags:
+      - ServerResourcesInfo
+  /setting/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateSettingRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/setting.CreateAndUpdateSettingRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 创建
+      tags:
+      - Setting
+  /setting/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID数组
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.IdCollection'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 删除
+      tags:
+      - Setting
+  /setting/download:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Setting request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/setting.QuerySettingRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Setting
+  /setting/get-list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Setting request object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/setting.QuerySettingRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询
+      tags:
+      - Setting
+  /setting/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: CreateAndUpdateSettingRequest object
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/setting.CreateAndUpdateSettingRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: 编辑成功
+          schema:
+            $ref: '#/definitions/response.ActionResult'
+      summary: 编辑
+      tags:
+      - Setting
+  /user/create:
+    post:
+      responses: {}
+      tags:
+      - User
+  /user/delete:
+    delete:
+      responses: {}
+      tags:
+      - User
+  /user/download:
+    post:
+      responses: {}
+      tags:
+      - User
+  /user/get-list:
+    get:
+      parameters:
+      - description: 逗号分隔的部门主键，仅匹配直属用户
+        in: query
+        name: departmentIdArray
+        type: string
+      - description: 用户主键
+        in: query
+        name: id
+        type: string
+      - description: 用户名，兼容 username
+        in: query
+        name: userName
+        type: string
+      - description: 昵称，兼容 nickname
+        in: query
+        name: nickName
+        type: string
+      - description: 是否启用
+        in: query
+        name: enabled
+        type: boolean
+      - description: 页码
+        in: query
+        name: pageIndex
+        required: true
+        type: integer
+      - description: 每页数量
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ActionResultPage'
+      summary: 查询用户列表
+      tags:
+      - User
+  /user/update:
+    put:
+      responses: {}
+      tags:
+      - User
+  /user/update-avatar:
+    post:
+      responses: {}
+      tags:
+      - UserCenter
+  /user/update-center:
+    put:
+      responses: {}
+      tags:
+      - UserCenter
+  /user/update-email:
+    put:
+      responses: {}
+      tags:
+      - UserCenter
+  /user/update-password:
+    put:
+      responses: {}
+      tags:
+      - UserCenter
+  /user/update-position:
+    put:
+      responses: {}
+      tags:
+      - UserCenter
+  /user/update-preferences-config:
+    put:
+      responses: {}
+      tags:
+      - UserCenter
+  /user/update-role:
+    put:
+      responses: {}
+      tags:
+      - UserCenter
+swagger: "2.0"
